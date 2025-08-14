@@ -1,0 +1,83 @@
+/* ---------- Base Reset ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+  background: #0b0e1a center/cover no-repeat fixed;
+  /* Replace with your own image: put disney-bg.jpg in /assets/ */
+  background-image: url("./disney-bg.jpg");
+}
+
+/* Soft gradient overlay so text is readable */
+.overlay {
+  position: fixed; inset: 0;
+  background: radial-gradient(1200px 800px at 70% 20%, rgba(255,255,255,.06), transparent 60%),
+              linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.65));
+  pointer-events: none;
+}
+
+/* ---------- Hero Content ---------- */
+.hero {
+  position: relative;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  gap: 1.2rem;
+  text-align: center;
+  padding: 2rem;
+  backdrop-filter: saturate(120%);
+}
+
+.subtle {
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.heading {
+  font-size: clamp(1.6rem, 4vw + 0.5rem, 3rem);
+  line-height: 1.15;
+  text-shadow: 0 2px 18px rgba(255,255,255,0.2), 0 6px 40px rgba(210,226,255,0.25);
+}
+
+/* ---------- Glowing Button ---------- */
+.glow-btn {
+  margin-top: 0.6rem;
+  font-size: clamp(1rem, 1.2vw + .6rem, 1.25rem);
+  padding: 0.95rem 1.6rem;
+  color: #fff;
+  background: linear-gradient(180deg, #2030ff, #7a2cff 55%, #ff2fb0);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow:
+    0 0 14px rgba(122,44,255,.55),
+    0 0 36px rgba(255,47,176,.45),
+    inset 0 0 20px rgba(255,255,255,.12);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  position: relative;
+  isolation: isolate;
+}
+.glow-btn::after {
+  content: "";
+  position: absolute; inset: -4px;
+  border-radius: inherit;
+  filter: blur(14px);
+  background: radial-gradient(circle at 30% 30%, rgba(122,44,255,.55), transparent 45%),
+              radial-gradient(circle at 70% 70%, rgba(255,47,176,.5), transparent 45%);
+  z-index: -1;
+  opacity: .9;
+}
+.glow-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:
+    0 0 22px rgba(122,44,255,.8),
+    0 0 60px rgba(255,47,176,.75),
+    inset 0 0 26px rgba(255,255,255,.18);
+  filter: saturate(1.2);
+}
+.glow-btn:active { transform: translateY(0) scale(0.995); }
